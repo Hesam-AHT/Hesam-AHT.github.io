@@ -1970,3 +1970,33 @@ textarea.form-input::-webkit-resizer { display: none; }
   .status-line { text-align: left; }
   .info-content { display: flex; flex-direction: column; align-items: center; text-align: center; }
 }
+
+/* collapsed header card: let it fit name, title and status line */
+.sidebar { max-height: 190px; }
+.sidebar.active { max-height: 640px; }
+.sidebar-info { align-items: center; }
+.avatar-box { flex-shrink: 0; overflow: hidden; }
+.info-content { min-width: 0; padding-right: 28px; }
+.info-content .name { white-space: normal; overflow-wrap: anywhere; line-height: 1.25; }
+.info-content .title { width: auto; max-width: 100%; }
+.contact-info :is(.contact-link) { overflow-wrap: anywhere; }
+
+@media (min-width: 580px) {
+  .sidebar { max-height: 210px; }
+  .sidebar.active { max-height: 700px; }
+  .info-content { padding-right: 0; }
+}
+
+/* wider left column so email and profile links stay whole */
+@media (min-width: 1250px) {
+  .sidebar { max-height: max-content; flex: 0 0 340px; width: 340px; }
+  .main-content { flex: 1 1 0; min-width: 0; width: auto; }
+  .info-content { padding-right: 0; }
+  .contact-info :is(.contact-link) { white-space: normal; overflow: visible; text-overflow: clip; }
+  .contact-info :is(.contact-link, time, address) { --fs-7: 13px; }
+}
+
+/* keep the avatar at its intended size in the collapsed card */
+.avatar-box { width: 80px; height: 80px; }
+@media (min-width: 580px) { .avatar-box { width: 120px; height: 120px; } }
+@media (min-width: 1250px) { .avatar-box { width: 150px; height: 150px; } }
